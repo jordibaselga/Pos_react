@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import ListaProductos from './components/ListaProductos';
+import getProductos from './services/getProductos';
+
+
 
 function App() {
+  const [productos, setProductos] = useState([])
+  //'All / Saleable / PoS / Food'
+  //'All / Consumable / Bebidas'
+  const comidas = 'All / Saleable / PoS / Food'
+  const bebidas = 'All / Consumable / Bebidas'
+  let categoriaKeyword = comidas
+  useEffect(function () {
+    getProductos({ categoriaKeyword }).then(productos => setProductos(productos))
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav>
+        <button onClick={() => {
+          categoriaKeyword = bebidas
+          console.log(categoriaKeyword);
+        }}>PARA BEBER</button>
+
+        <button onClick={() => {
+          categoriaKeyword = comidas
+          console.log(categoriaKeyword);
+        }}>PARA COMER</button>
+      </nav>
+      <section className="App-section">
+        <ListaProductos productos={productos} />
+      </section>
     </div>
   );
 }

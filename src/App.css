@@ -3,6 +3,7 @@
 }
 
 .App-section {
+  padding: auto;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -10,7 +11,36 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
+#bienvenida {
+  background-image: url(https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2019/06/25/15614775255199.jpg);
+  background-repeat: no-repeat;
+  width: 100vh;
+  height: 100vw;
+}
 
+#bienvenida-titulo {
+  color: white;
+  position: relative;
+  top: 15%;
+}
+
+.img-producto {
+  width: -webkit-fill-available;
+  object-fit: scale-down;
+}
+
+@media (min-width:600px) {
+  .card-producto {
+    width: 18rem;
+    height: 550px;
+  }
+
+  .btn-primary {
+    bottom: 21px;
+    position: absolute;
+    left: 20%;
+  }
+}
